@@ -1,0 +1,421 @@
+---
+import Layout from "../components/Layout.astro";
+
+export const prerender = false;
+---
+
+<Layout title="Censo Nacional de Viviendas - Venezuela 2026">
+  <div class="mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <div class="flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full">
+        <span class="text-3xl">🏠</span>
+      </div>
+      <div>
+        <h1 class="text-3xl font-bold text-white md:text-4xl">
+          Censo Nacional de Viviendas
+        </h1>
+        <p class="text-lg text-neutral-400">República Bolivariana de Venezuela - 2026</p>
+      </div>
+    </div>
+    <p class="text-neutral-300">
+      Complete el siguiente formulario con la información de su vivienda. Todos los datos son confidenciales y serán utilizados únicamente con fines estadísticos.
+    </p>
+  </div>
+
+  <form id="censoForm" class="space-y-8">
+    <!-- Sección 1: Ubicación Geográfica -->
+    <section class="p-6 border rounded-lg bg-neutral-700/50 border-neutral-600">
+      <h2 class="flex items-center gap-2 mb-4 text-xl font-semibold text-yellow-400">
+        <span>📍</span> Sección 1: Ubicación Geográfica
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="estado" class="block mb-1 text-sm font-medium text-neutral-300">Estado *</label>
+          <select id="estado" name="estado" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione un estado</option>
+            <option value="amazonas">Amazonas</option>
+            <option value="anzoategui">Anzoátegui</option>
+            <option value="apure">Apure</option>
+            <option value="aragua">Aragua</option>
+            <option value="barinas">Barinas</option>
+            <option value="bolivar">Bolívar</option>
+            <option value="carabobo">Carabobo</option>
+            <option value="cojedes">Cojedes</option>
+            <option value="delta_amacuro">Delta Amacuro</option>
+            <option value="distrito_capital">Distrito Capital</option>
+            <option value="falcon">Falcón</option>
+            <option value="guarico">Guárico</option>
+            <option value="lara">Lara</option>
+            <option value="merida">Mérida</option>
+            <option value="miranda">Miranda</option>
+            <option value="monagas">Monagas</option>
+            <option value="nueva_esparta">Nueva Esparta</option>
+            <option value="portuguesa">Portuguesa</option>
+            <option value="sucre">Sucre</option>
+            <option value="tachira">Táchira</option>
+            <option value="trujillo">Trujillo</option>
+            <option value="vargas">La Guaira</option>
+            <option value="yaracuy">Yaracuy</option>
+            <option value="zulia">Zulia</option>
+          </select>
+        </div>
+        <div>
+          <label for="municipio" class="block mb-1 text-sm font-medium text-neutral-300">Municipio *</label>
+          <input type="text" id="municipio" name="municipio" required placeholder="Ingrese el municipio" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="parroquia" class="block mb-1 text-sm font-medium text-neutral-300">Parroquia *</label>
+          <input type="text" id="parroquia" name="parroquia" required placeholder="Ingrese la parroquia" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="sector" class="block mb-1 text-sm font-medium text-neutral-300">Sector / Urbanización / Barrio</label>
+          <input type="text" id="sector" name="sector" placeholder="Ingrese el sector" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div class="md:col-span-2">
+          <label for="direccion" class="block mb-1 text-sm font-medium text-neutral-300">Dirección Completa *</label>
+          <textarea id="direccion" name="direccion" required rows="2" placeholder="Calle, avenida, número de casa o apartamento, piso, etc." class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Características de la Vivienda -->
+    <section class="p-6 border rounded-lg bg-neutral-700/50 border-neutral-600">
+      <h2 class="flex items-center gap-2 mb-4 text-xl font-semibold text-yellow-400">
+        <span>🏗️</span> Sección 2: Características de la Vivienda
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="tipoVivienda" class="block mb-1 text-sm font-medium text-neutral-300">Tipo de Vivienda *</label>
+          <select id="tipoVivienda" name="tipoVivienda" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione el tipo</option>
+            <option value="casa">Casa</option>
+            <option value="quinta">Quinta</option>
+            <option value="apartamento">Apartamento</option>
+            <option value="casa_vecindad">Casa de Vecindad</option>
+            <option value="rancho">Rancho</option>
+            <option value="vivienda_rural">Vivienda Rural</option>
+            <option value="otra">Otra</option>
+          </select>
+        </div>
+        <div>
+          <label for="condicionOcupacion" class="block mb-1 text-sm font-medium text-neutral-300">Condición de Ocupación *</label>
+          <select id="condicionOcupacion" name="condicionOcupacion" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione la condición</option>
+            <option value="propia_pagada">Propia pagada totalmente</option>
+            <option value="propia_pagando">Propia pagándose</option>
+            <option value="alquilada">Alquilada</option>
+            <option value="cedida">Cedida / Prestada</option>
+            <option value="invadida">Ocupada de hecho</option>
+            <option value="otra">Otra situación</option>
+          </select>
+        </div>
+        <div>
+          <label for="anoConstruction" class="block mb-1 text-sm font-medium text-neutral-300">Año de Construcción (aproximado)</label>
+          <input type="number" id="anoConstruction" name="anoConstruction" min="1900" max="2026" placeholder="Ej: 1995" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="numPisos" class="block mb-1 text-sm font-medium text-neutral-300">Número de Pisos *</label>
+          <select id="numPisos" name="numPisos" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="1">1 piso</option>
+            <option value="2">2 pisos</option>
+            <option value="3">3 pisos</option>
+            <option value="4+">4 o más pisos</option>
+          </select>
+        </div>
+        <div>
+          <label for="numHabitaciones" class="block mb-1 text-sm font-medium text-neutral-300">Número de Habitaciones *</label>
+          <select id="numHabitaciones" name="numHabitaciones" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6+">6 o más</option>
+          </select>
+        </div>
+        <div>
+          <label for="numBanos" class="block mb-1 text-sm font-medium text-neutral-300">Número de Baños *</label>
+          <select id="numBanos" name="numBanos" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="0">Sin baño</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4+">4 o más</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 3: Materiales de Construcción -->
+    <section class="p-6 border rounded-lg bg-neutral-700/50 border-neutral-600">
+      <h2 class="flex items-center gap-2 mb-4 text-xl font-semibold text-yellow-400">
+        <span>🧱</span> Sección 3: Materiales de Construcción
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="materialParedes" class="block mb-1 text-sm font-medium text-neutral-300">Material de Paredes *</label>
+          <select id="materialParedes" name="materialParedes" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="bloque_ladrillo">Bloque / Ladrillo</option>
+            <option value="concreto">Concreto</option>
+            <option value="adobe_tapia">Adobe / Tapia</option>
+            <option value="madera">Madera</option>
+            <option value="zinc_lamina">Zinc / Lámina</option>
+            <option value="bahareque">Bahareque</option>
+            <option value="otro">Otro material</option>
+          </select>
+        </div>
+        <div>
+          <label for="materialTecho" class="block mb-1 text-sm font-medium text-neutral-300">Material de Techo *</label>
+          <select id="materialTecho" name="materialTecho" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="platabanda">Platabanda</option>
+            <option value="tejas">Tejas</option>
+            <option value="zinc_lamina">Zinc / Lámina</option>
+            <option value="asbesto">Asbesto cemento</option>
+            <option value="palma_paja">Palma / Paja</option>
+            <option value="otro">Otro material</option>
+          </select>
+        </div>
+        <div>
+          <label for="materialPiso" class="block mb-1 text-sm font-medium text-neutral-300">Material de Piso *</label>
+          <select id="materialPiso" name="materialPiso" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="ceramica">Cerámica / Baldosas</option>
+            <option value="cemento">Cemento</option>
+            <option value="granito_marmol">Granito / Mármol</option>
+            <option value="madera_parquet">Madera / Parquet</option>
+            <option value="tierra">Tierra</option>
+            <option value="otro">Otro material</option>
+          </select>
+        </div>
+        <div>
+          <label for="estadoVivienda" class="block mb-1 text-sm font-medium text-neutral-300">Estado General de la Vivienda *</label>
+          <select id="estadoVivienda" name="estadoVivienda" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="bueno">Bueno</option>
+            <option value="regular">Regular</option>
+            <option value="deteriorado">Deteriorado</option>
+            <option value="en_construccion">En construcción</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 4: Servicios Básicos -->
+    <section class="p-6 border rounded-lg bg-neutral-700/50 border-neutral-600">
+      <h2 class="flex items-center gap-2 mb-4 text-xl font-semibold text-yellow-400">
+        <span>💡</span> Sección 4: Servicios Básicos
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="servicioAgua" class="block mb-1 text-sm font-medium text-neutral-300">Abastecimiento de Agua *</label>
+          <select id="servicioAgua" name="servicioAgua" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="acueducto">Acueducto / Red pública</option>
+            <option value="pozo">Pozo con bomba</option>
+            <option value="pila_publica">Pila pública</option>
+            <option value="camion_cisterna">Camión cisterna</option>
+            <option value="rio_quebrada">Río / Quebrada</option>
+            <option value="lluvia">Agua de lluvia</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div>
+          <label for="frecuenciaAgua" class="block mb-1 text-sm font-medium text-neutral-300">Frecuencia del Servicio de Agua</label>
+          <select id="frecuenciaAgua" name="frecuenciaAgua" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="diario">Diario / Continuo</option>
+            <option value="interdiario">Interdiario</option>
+            <option value="semanal">1-2 veces por semana</option>
+            <option value="quincenal">Cada 15 días o más</option>
+            <option value="irregular">Irregular</option>
+          </select>
+        </div>
+        <div>
+          <label for="servicioElectrico" class="block mb-1 text-sm font-medium text-neutral-300">Servicio Eléctrico *</label>
+          <select id="servicioElectrico" name="servicioElectrico" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="red_publica">Red pública</option>
+            <option value="planta_propia">Planta eléctrica propia</option>
+            <option value="solar">Panel solar</option>
+            <option value="no_tiene">No tiene</option>
+          </select>
+        </div>
+        <div>
+          <label for="servicioGas" class="block mb-1 text-sm font-medium text-neutral-300">Servicio de Gas para Cocinar *</label>
+          <select id="servicioGas" name="servicioGas" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="directo">Gas directo por tubería</option>
+            <option value="bombona">Bombona / Cilindro</option>
+            <option value="electrico">Cocina eléctrica</option>
+            <option value="lena_carbon">Leña / Carbón</option>
+            <option value="no_tiene">No tiene</option>
+          </select>
+        </div>
+        <div>
+          <label for="disposicionAguas" class="block mb-1 text-sm font-medium text-neutral-300">Disposición de Aguas Servidas *</label>
+          <select id="disposicionAguas" name="disposicionAguas" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="cloaca">Cloaca / Alcantarillado</option>
+            <option value="pozo_septico">Pozo séptico</option>
+            <option value="letrina">Letrina</option>
+            <option value="superficie">A superficie / Calle</option>
+            <option value="no_tiene">No tiene</option>
+          </select>
+        </div>
+        <div>
+          <label for="internet" class="block mb-1 text-sm font-medium text-neutral-300">Acceso a Internet</label>
+          <select id="internet" name="internet" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="fibra">Fibra óptica</option>
+            <option value="adsl">ADSL / Banda ancha</option>
+            <option value="movil">Internet móvil (datos)</option>
+            <option value="satelital">Satelital</option>
+            <option value="no_tiene">No tiene</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 5: Información del Hogar -->
+    <section class="p-6 border rounded-lg bg-neutral-700/50 border-neutral-600">
+      <h2 class="flex items-center gap-2 mb-4 text-xl font-semibold text-yellow-400">
+        <span>👨‍👩‍👧‍👦</span> Sección 5: Información del Hogar
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="numHabitantes" class="block mb-1 text-sm font-medium text-neutral-300">Número Total de Habitantes *</label>
+          <input type="number" id="numHabitantes" name="numHabitantes" min="1" max="50" required placeholder="Ej: 4" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="numFamilias" class="block mb-1 text-sm font-medium text-neutral-300">Número de Familias que Habitan *</label>
+          <select id="numFamilias" name="numFamilias" required class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="1">1 familia</option>
+            <option value="2">2 familias</option>
+            <option value="3">3 familias</option>
+            <option value="4+">4 o más familias</option>
+          </select>
+        </div>
+        <div>
+          <label for="menores" class="block mb-1 text-sm font-medium text-neutral-300">Niños menores de 12 años</label>
+          <input type="number" id="menores" name="menores" min="0" max="20" placeholder="0" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="adultosMayores" class="block mb-1 text-sm font-medium text-neutral-300">Adultos mayores (65+ años)</label>
+          <input type="number" id="adultosMayores" name="adultosMayores" min="0" max="20" placeholder="0" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="discapacitados" class="block mb-1 text-sm font-medium text-neutral-300">Personas con discapacidad</label>
+          <input type="number" id="discapacitados" name="discapacitados" min="0" max="20" placeholder="0" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="jefeHogar" class="block mb-1 text-sm font-medium text-neutral-300">Jefe(a) del Hogar - Género</label>
+          <select id="jefeHogar" name="jefeHogar" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+            <option value="">Seleccione</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 6: Información del Encuestado -->
+    <section class="p-6 border rounded-lg bg-neutral-700/50 border-neutral-600">
+      <h2 class="flex items-center gap-2 mb-4 text-xl font-semibold text-yellow-400">
+        <span>📋</span> Sección 6: Información del Encuestado
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="nombreEncuestado" class="block mb-1 text-sm font-medium text-neutral-300">Nombre Completo *</label>
+          <input type="text" id="nombreEncuestado" name="nombreEncuestado" required placeholder="Nombre y apellido" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="cedula" class="block mb-1 text-sm font-medium text-neutral-300">Cédula de Identidad *</label>
+          <div class="flex gap-2">
+            <select id="cedulaTipo" name="cedulaTipo" required class="p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+              <option value="V">V</option>
+              <option value="E">E</option>
+            </select>
+            <input type="text" id="cedula" name="cedula" required placeholder="12345678" pattern="[0-9]{6,10}" class="flex-1 p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+          </div>
+        </div>
+        <div>
+          <label for="telefono" class="block mb-1 text-sm font-medium text-neutral-300">Teléfono de Contacto</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="0412-1234567" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+        <div>
+          <label for="email" class="block mb-1 text-sm font-medium text-neutral-300">Correo Electrónico</label>
+          <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" class="w-full p-3 text-white border rounded-lg bg-neutral-800 border-neutral-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent placeholder-neutral-500">
+        </div>
+      </div>
+    </section>
+
+    <!-- Botones de acción -->
+    <div class="flex flex-col gap-4 sm:flex-row sm:justify-between">
+      <button type="button" onclick="clearForm()" class="px-6 py-3 font-medium text-white transition-colors border rounded-lg border-neutral-500 hover:bg-neutral-700">
+        Limpiar Formulario
+      </button>
+      <button type="submit" class="px-8 py-3 font-semibold text-black transition-colors bg-yellow-500 rounded-lg hover:bg-yellow-400">
+        Enviar Censo
+      </button>
+    </div>
+  </form>
+
+  <!-- Modal de confirmación -->
+  <div id="confirmModal" class="fixed inset-0 z-50 items-center justify-center hidden bg-black/70">
+    <div class="w-full max-w-md p-8 mx-4 text-center rounded-lg bg-neutral-800">
+      <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-green-500 rounded-full">
+        <span class="text-3xl">✓</span>
+      </div>
+      <h3 class="mb-2 text-2xl font-bold text-white">¡Censo Enviado!</h3>
+      <p class="mb-6 text-neutral-300">
+        Su información ha sido registrada exitosamente. Gracias por participar en el Censo Nacional de Viviendas de Venezuela 2026.
+      </p>
+      <p class="mb-6 text-sm text-neutral-400">
+        Código de confirmación: <span id="confirmCode" class="font-mono text-yellow-400"></span>
+      </p>
+      <button onclick="closeModal()" class="px-6 py-2 font-medium text-black transition-colors bg-yellow-500 rounded-lg hover:bg-yellow-400">
+        Cerrar
+      </button>
+    </div>
+  </div>
+
+  <script is:inline>
+    function clearForm() {
+      document.getElementById('censoForm').reset();
+    }
+
+    function closeModal() {
+      document.getElementById('confirmModal').classList.add('hidden');
+      document.getElementById('confirmModal').classList.remove('flex');
+      clearForm();
+    }
+
+    function generateConfirmCode() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let code = 'CNV-2026-';
+      for (let i = 0; i < 8; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return code;
+    }
+
+    document.getElementById('censoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Generate confirmation code
+      const code = generateConfirmCode();
+      document.getElementById('confirmCode').textContent = code;
+
+      // Show modal
+      document.getElementById('confirmModal').classList.remove('hidden');
+      document.getElementById('confirmModal').classList.add('flex');
+    });
+  </script>
+</Layout>
